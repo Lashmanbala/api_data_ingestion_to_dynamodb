@@ -14,4 +14,8 @@ repo_res = requests.get('https://api.github.com/repos/lashmanbala/api_data_inges
 
 repos = json.loads(repo_res.content.decode('utf-8'))
 
-print(repos)
+repos_list = requests.get('https://api.github.com/repositories?since=840563886',headers = {'Authorization':f'token {token}'})
+
+lst = json.loads(repos_list.content.decode('utf-8'))
+
+print(len(lst))
