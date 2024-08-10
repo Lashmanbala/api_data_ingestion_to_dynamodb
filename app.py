@@ -19,5 +19,14 @@ repos_list = requests.get('https://api.github.com/repositories?since=840563886',
 lst = json.loads(repos_list.content.decode('utf-8'))
 
 for repo in lst:
-    print({'id':repo['id'],'owner.login':repo['owner']['login'],'name':repo['name']})
+    {'id':repo['id'],'owner.login':repo['owner']['login'],'name':repo['name']}
+
+repo = lst[0]
+
+owner = repo['owner']['login']
+name = repo['name']
+
+repo_details = requests.get(f'https://api.github.com/repos/{owner}/{name}', headers={'Authorization':f'token {token}'})
+details = json.loads(repo_details.content.decode('utf-8'))
+print(details)
 
