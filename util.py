@@ -1,8 +1,8 @@
 import requests
 import json
 
-def list_repos(token, since=840563886):
-    repos_res = requests.get(f'https://api.github.com/repositories?since={since}',
+def list_repos(token, since_repo_id):
+    repos_res = requests.get(f'https://api.github.com/repositories?since={since_repo_id}',
                              headers = {'Authorization':f'token {token}'})
     
     return json.loads(repos_res.content.decode('utf-8'))
