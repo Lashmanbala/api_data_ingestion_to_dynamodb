@@ -1,5 +1,6 @@
 import os
 import boto3
+from botocore.exceptions import ClientError
 
 dynamo_db = boto3.client('dynamodb')
 
@@ -21,8 +22,15 @@ def create_tables():
             ],
             BillingMode='PAY_PER_REQUEST'
         )
-        print(ghrepos_table)
+        print('ghrepos table successfully created')
+    
+    except ClientError as e:
+        if e.response['Error']['Code'] == 'ResourceInUseException':
+            print("Table 'ghrepos' already exists.")
+        else:
+            print(f"Unexpected error: {e}")
 
+    try:
         marker_table = dynamo_db.create_table(
             TableName='ghmarker',
             AttributeDefinitions=[
@@ -40,10 +48,13 @@ def create_tables():
             BillingMode='PAY_PER_REQUEST'
         )
 
-        print(marker_table)
-        print('Tables created successfully')
-    except Exception as e:
-        print(e)
+        print('Marker table created successfully')
+        
+    except ClientError as e:
+        if e.response['Error']['Code'] == 'ResourceInUseException':
+            print("Table 'ghrepos' already exists.")
+        else:
+            print(f"Unexpected error: {e}")
 
 
 def load_repos(table_name, repo_details_list):
@@ -79,6 +90,6 @@ def load_repos(table_name, repo_details_list):
 
     print('Successfully uploaded into table')
 
-response = dynamo_db.scan(
-    TableName='ghrepos')
-print(response)
+# response = dynamo_db.scan(
+#     TableName='ghrepos')
+# print(response)
