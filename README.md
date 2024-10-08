@@ -2,14 +2,6 @@
 
 This repository contains a project designed for ingesting data from an API and storing it in AWS DynamoDB. The project uses Python along with the Boto3 library to facilitate interactions with the AWS DynamoDB service.
 
-## Table of Contents
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [License](#license)
 
 ## Overview
 
