@@ -26,11 +26,6 @@ You can install Boto3 using pip:
 ```bash
 pip install boto3
 
-## Configuration
-
-- **API Configuration**: Update the API endpoint and any necessary headers or parameters in the `api_client.py` script.
-
-- **DynamoDB Configuration**: Configure the DynamoDB table name and AWS region in the `dynamodb_interface.py` script.
 
 ## Usage
 
