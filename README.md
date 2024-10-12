@@ -21,10 +21,6 @@ Before you begin, ensure you have met the following requirements:
 - **Boto3**: The AWS SDK for Python
 - **AWS Credentials**: Properly configured AWS credentials with permissions to access DynamoDB
 
-You can install Boto3 using pip:
-
-```bash
-pip install boto3
 
 
 ## Usage
